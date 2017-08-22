@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Henrik Mauroy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Forsiden - VG</title>
+    <script>
+        window.onload = oppstart;
+
+        function oppstart() {
+            // Hovedprogramkode her...
+            document.getElementById("bilde").onclick = virus;
+        }
+
+        function virus() {
+            alert("Din maskin er rammet av et farlig virus ekspertene kaller for 'Sebastius Bjørvikus'." +
+                " Trykk 'lukk' for å få vite mer om dette viruset.");
+            alert("Det er et par ting du bør vite om dette viruset før du begynner å bruke maskinen din normalt igjen.");
+            alert("Nr. 1:   Viruset er laget av en ukjent hacker som trolig holder til i eller rundt havnebyen Drøbak");
+            alert("Nr. 2:   Du har fått dette viruset fordi... Vel... Ingen vet helt hvordan det blir spredt.");
+            for (i = 3; i < 6; i++) {
+                alert("Nr. " + i + ":   Viruset er uhelbredelig")
+            }
+            document.getElementById("trollfjes").style.display = "block";
+            document.getElementById("bilde").style.display = "none";
+            document.getElementById("trollfjes").onclick = neida;
+        }
+        function neida() {
+            for (i = 5; i > 0; i--) {
+                alert("Neida, jeg bare skrøner med deg min venn! " + "for å finne ut hvem som er spøkefuglen i rommet " +
+                    "må du trykke på lukk " + i + " gang(er)" );
+            }
+            window.location.replace("https://www.facebook.com/sebastian.bjorvik");
+        }
+
+    </script>
+    <style>
+        body {
+            margin: 0;
+        }
+        #trollfjes {
+            width: 100%;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<img id="trollfjes" src="trollFace.jpg" alt="">
+<img id="bilde" src="skjermbildeVG.png" alt="">
+</body>
+</html>
