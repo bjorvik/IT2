@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Henrik Mauroy">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pølsebestilling</title>
+    <script>
+        window.onload = oppstart;
+
+        function oppstart() {
+            // Hovedprogramkode her...
+            document.getElementById("btnBestill").onclick = bestill;
+        }
+
+        function bestill() {
+            var e = document.getElementById("selPolse");
+            var polsetype = e.options[e.selectedIndex].value;
+
+            var radioverdi = radioForm.elements.namedItem("radBrodLomp").value;
+
+            var sennep = document.getElementById("chkSennep").checked;
+            var ketchup = document.getElementById("chkKetchup").checked;
+            var lok = document.getElementById("chkLok").checked;
+
+            if (sennep === true) {
+                sennep = "<br> +sennep";
+            }
+            else {
+                sennep = "";
+            }
+
+            if (ketchup === true) {
+                ketchup = "<br> +ketchup";
+            }
+            else {
+                ketchup = "";
+            }
+            if (lok === true) {
+                lok = "<br> +sprøstekt løk";
+            }
+            else {
+                lok = "";
+            }
+
+            var stk = document.getElementById("txtAntall").value;
+
+            document.getElementById("txtKvittering").innerHTML = polsetype + " i " + radioverdi
+                + sennep + ketchup + lok
+                + "<br>" + stk + "stk"
+            ;
+        }
+
+    </script>
+    <style>
+        body {
+            text-align: center;
+            background-image: url("wurst.png");
+            background-size: cover;
+        }
+        #innpakning {
+            width: 300px;
+            height: 500px;
+
+            background-color: white;
+            margin: auto;
+            margin-top: 40px;
+            border: solid 10px #c26c5a;
+        }
+    </style>
+</head
+<body>
+<div id="innpakning">
+    <h1>Pølsebestilling</h1>
+    Type pølse:
+    <select name="selPolse" id="selPolse">
+        <option value="Wiener">Wiener</option>
+        <option value="Grill">Grill</option>
+        <option value="Bratwurst">Bratwurst</option>
+        <option value="Ostebacon">Ostebacon</option>
+    </select>
+    <br><br>
+    Brød/lompe:
+    <form action="" name="radioForm">
+        <input type="radio" name="radBrodLomp" checked="checked" value="brød"> Brød
+        <input type="radio" name="radBrodLomp" value="lompe"> Lompe
+        <input type="radio" name="radBrodLomp" value="vaffel"> Vaffel
+    </form>
+    <br><br>
+    Sennep: <input type="checkbox" id="chkSennep">
+    Ketchup: <input type="checkbox" id="chkKetchup">
+    Sprøstekt løk: <input type="checkbox" id="chkLok">
+    <br><br><br>
+    Antall: <input type="number" id="txtAntall" value="1" min="1" max="10"><br><br>
+    <br>
+    <button type="button" id="btnBestill">Bestill</button>
+    <a href=""><button type="button">Clear</button></a>
+    <br><br>
+    <p id="txtKvittering">Her kommer bestillingen din</p>
+</div>
+</body>
+</html>
