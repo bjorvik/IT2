@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sebastian Bjørvik">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <script>
+        window.onload = oppstart;
+
+        var array = [];
+        var forsok = 30;
+
+        function oppstart() {
+            // Hovedprogramkode her...//Sebastian
+            document.getElementById("forsok").innerHTML = "Du har " + forsok + " forsøk igjen";
+            for(var i=0; i < 10; i++) {
+                array[i] = ["O" + i, "A" + i, "B" + i, "C" + i, "D" + i, "E" + i, "F" + i, "G" + i, "H" + i, "I" + i, "J" + i];
+
+                var tr = document.createElement("tr");
+
+                for (var j = 0; j < 10; j++) {
+                    var td = document.createElement("td");
+                    td.style.width = "50px";
+                    td.style.height = "50px";
+                    td.id = array[i][j];
+                    if (i === 0) {
+                        var bokstav = ["A", "B", "C", "D", "E", "F", "G", "H", "I"];
+                        td.className = "topp";
+                        td.innerHTML = bokstav[j - 1];
+                    }
+                    if (j === 0) {
+                        td.className = "topp";
+                        td.innerHTML = i;
+                    }
+                    tr.appendChild(td);
+                }
+                document.getElementById("table").appendChild(tr);
+            }
+            console.log(array);
+            document.getElementById("txt").onchange = les;
+        }
+
+        function les() {
+            var felt = document.getElementById("txt").value;
+            if( felt === "B2" || felt === "C2" || felt === "D2" ||
+                felt === "C7" || felt === "D7" ||
+                felt === "H1" || felt === "H2" || felt === "H3" || felt === "H4" || felt === "H5" ||
+                felt === "F4"
+            ) {
+                document.getElementById(felt).style.backgroundColor = "green";
+            }
+            else{
+                for(k=0; k<10; k++) {
+                    if(array[k].indexOf(felt) > -1) {
+                        document.getElementById(felt).style.backgroundColor = "red";
+                        forsok--;
+                    }
+                }
+            }
+            document.getElementById("forsok").innerHTML = "Du har " + forsok + " forsøk igjen";
+            if( document.getElementById("B2").style.backgroundColor === "green" &&
+                document.getElementById("C2").style.backgroundColor === "green" &&
+                document.getElementById("D2").style.backgroundColor === "green" &&
+                document.getElementById("C7").style.backgroundColor === "green" &&
+                document.getElementById("D7").style.backgroundColor === "green" &&
+                document.getElementById("H1").style.backgroundColor === "green" &&
+                document.getElementById("H2").style.backgroundColor === "green" &&
+                document.getElementById("H3").style.backgroundColor === "green" &&
+                document.getElementById("H4").style.backgroundColor === "green" &&
+                document.getElementById("H5").style.backgroundColor === "green" &&
+                document.getElementById("F4").style.backgroundColor === "green"
+            ) {
+                document.getElementById("table").style.backgroundColor = "green";
+                document.getElementById("txt").style.visibility = "hidden";
+                document.getElementById("forsok").innerHTML = "Gratulerer, du klarte det på " + (30 - forsok) + " forsøk";
+            }
+            else if(forsok === 0) {
+                document.getElementById("table").style.backgroundColor = "red";
+                document.getElementById("txt").style.visibility = "hidden";
+            }
+            document.getElementById("txt").value = "";
+        }
+
+    </script>
+    <style>
+        td {
+            border: solid 1px;
+            text-align: center;
+        }
+        .topp {
+            background-color: grey;
+        }
+        #O0 {
+            background-color: black;
+        }
+        table {
+            border-collapse: collapse;
+            margin: auto;
+        }
+        input {
+            width: 500px;
+        }
+        body {
+            text-align: center;
+            font-family: Arial;
+        }
+    </style>
+</head>
+<body>
+<h1>Skriv inn et koordinat (A1, B1, C1...)</h1>
+<h1 id="forsok">Du har X forsøk igjen</h1>
+<input type="text" id="txt" autocomplete="off" autofocus>
+<br><br>
+<table id="table"></table>
+</body>
+</html>
