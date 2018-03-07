@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sebastian Bjorvik">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rekker</title>
+    <script>
+        window.onload = oppstart;
+        var array = [];
+
+        function oppstart() {
+            // Hovedprogramkode her...
+            document.getElementById("btnLegg").onclick = leggTilRekke;
+        }
+        function leggTilRekke() {
+            document.getElementById("btnLegg").style.display = "none";
+            document.getElementById("txtRekke").style.display = "none";
+            document.getElementById("text1").style.display = "none";
+
+            var rekke = document.getElementById("txtRekke").value;
+            array = rekke.split(",");
+
+            for (i=0; i<array.length; i++) {
+                array[i] = parseFloat(array[i]);
+            }
+
+            document.getElementById("utskriftRekke").innerHTML = array;
+
+            document.getElementById("txtN").style.display = "inline";
+            document.getElementById("btnRegn").style.display = "inline";
+            document.getElementById("reset").style.display = "inline";
+            document.getElementById("text2").style.display = "inline";
+
+            document.getElementById("btnRegn").onclick = regn;
+        }
+        function regn() {
+            var sum = 0;
+            var n = parseFloat(document.getElementById("txtN").value);
+            for (i=0; i<n; i++) {
+                sum += array[i];
+            }
+            document.getElementById("utskriftSum").innerHTML = sum;
+        }
+
+    </script>
+    <style>
+        #txtN, #btnRegn, #reset, #text2 {
+            display: none;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        body {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<span id="text1">Skriv inn en rekke med komma i mellom tallene:</span>
+<input type="text" id="txtRekke" autocomplete="off">
+<button type="button" id="btnLegg"> Legg til rekke </button>
+<p id="utskriftRekke"></p>
+<span id="text2">Regn ut S<sub>n</sub> (skriv n her):</span>
+<input type="text" id="txtN" autocomplete="off">
+<button type="button" id="btnRegn"> Regn ut </button>
+<button type="button" id="reset"><a href="">Skriv inn ny rekke</a></button>
+<p id="utskriftSum"></p>
+</body>
+</html>

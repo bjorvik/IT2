@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sebastian Bjorvik">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <script>
+        window.onload = oppstart;
+
+        function oppstart() {
+            document.getElementById("7_2a").onclick = oppg7_2a;
+            document.getElementById("7_2b").onclick = oppg7_2b;
+            document.getElementById("7_2c").onclick = oppg7_2c;
+            document.getElementById("7_2d").onclick = oppg7_2d;
+        }
+
+        function oppg7_2a() {
+            // Hovedprogramkode her...
+            var a = 0;
+            var buffer = 0;
+            var folge = [];
+            folge.push(a);
+            for (var n=2; n<1000; n++) {
+                a = a+2;
+                folge.push(" " + a);
+            }
+            document.body.innerHTML = "<button><a href=''>Tilbake</a></button><br>" + folge;
+        }
+        function oppg7_2b() {
+            // Hovedprogramkode her...pr
+            var a = 1;
+            var buffer = 0;
+            var folge = [];
+            folge.push(a);
+            for (var n=2; n<1000; n++) {
+                a = a*3;
+                folge.push(" " + a);
+            }
+            document.body.innerHTML = "<button><a href=''>Tilbake</a></button><br>" + folge;
+        }
+        function oppg7_2c() {
+            // Hovedprogramkode her...
+            var a = 11;
+            var buffer = 0;
+            var folge = [];
+            folge.push(a);
+            for (var n=1; n<1000; n++) {
+                a = a -3;
+                folge.push(" " + a);
+            }
+            document.body.innerHTML = "<button><a href=''>Tilbake</a></button><br>" + folge;
+        }
+        function oppg7_2d() {
+            // Hovedprogramkode her...
+            var a = 2;
+            var buffer = 6;
+            var folge = [];
+            folge.push(a);
+            for (var n=1; n<1000; n++) {
+                a = a + buffer;
+                buffer = buffer + 4;
+                folge.push(" " + a);
+            }
+            document.body.innerHTML = "<button><a href=''>Tilbake</a></button><br>" + folge;
+        }
+
+    </script>
+    <style>
+        html {
+            background-color: #000;
+            color: lawngreen;
+        }
+    </style>
+</head>
+<body>
+<button id="7_2a">Oppgave 7.2 a</button>
+<button id="7_2b">Oppgave 7.2 b</button>
+<button id="7_2c">Oppgave 7.2 c</button>
+<button id="7_2d">Oppgave 7.2 d</button>
+</body>
+</html>
