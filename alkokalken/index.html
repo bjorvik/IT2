@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sebastian Bjorvik">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Alko-kalken</title>
+    <script>
+        window.onload = oppstart;
+
+        function oppstart() {
+            // Hovedprogramkode her...
+            d("btnRegn").onclick = regnut;
+            d("pris").onchange = vol;
+            d("vol").onchange = innh;
+            d("innh").onchange = regnut;
+        }
+
+        function vol() {
+            d("vol").select();
+        }
+        function innh() {
+            d("innh").select();
+        }
+
+        function regnut() {
+            var pris = d("pris").value;
+            var vol = d("vol").value;
+            var innh = d("innh").value;
+            var arr = [pris, vol, innh];
+
+            var score = (parseFloat(vol.replace(',','.').replace(' ',''))/100*parseFloat(innh.replace(',','.').replace(' ',''))/parseFloat(pris.replace(',','.').replace(' ',''))).toFixed(4);
+            d("txt").innerHTML = score + "cl/kr";
+        }
+        function d(typ) {
+            return document.getElementById(typ);
+        }
+
+    </script>
+    <style>
+        h1 {
+            font-size: 400%;
+        }
+        body {
+            text-align: center;
+            font-family: Arial;
+            font-weight: bold;
+            margin: 0;
+            background-color: gray;
+            background-image: url("SVG/hvit.svg");
+            background-position: top;
+            background-size: cover;
+        }
+        input {
+            width: 25%;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: larger;
+        }
+        p {
+            font-size: 200%;
+        }
+        @media only screen and (max-width: 768px) {
+            input {
+                width: 50%;
+            }
+            h1 {
+                font-size: 300%;
+            }
+        }
+    </style>
+</head>
+<body>
+<h1>Sebastians alkoholkalkulator</h1>
+<br>
+Pris (kr) <br> <input type="text" id="pris" autocomplete="off" autofocus="autofocus"> <br><br><br>
+Volum (cl) <br> <input type="text" id="vol" autocomplete="off"> <br><br><br>
+Innhold (%) <br> <input type="text" id="innh" autocomplete="off"> <br><br><br>
+<button id="btnRegn">Regn ut</button>
+<br>
+<p id="txt"></p>
+</body>
+</html>
