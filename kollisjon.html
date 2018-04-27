@@ -10,10 +10,10 @@
 
         var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
         var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        var vx = 10;
-        var vy = -10;
-        var px = 1;
-        var py = 1;
+        var vx = -11;
+        var vy = -11;
+        var px = 10;
+        var py = 10;
         var sx = 300;
         var sy = 400;
         var dx = 700;
@@ -120,6 +120,7 @@
             border-radius: 50%;
             left: 3px;
             top: 3px;
+            animation: spinn 1s linear reverse infinite;
         }
         #ball2 {
             background-color: deeppink;
@@ -132,6 +133,15 @@
             border-radius: 50%;
             left: 3px;
             top: 3px;
+            animation: spinn 1.1s linear infinite;
+        }
+        @keyframes spinn {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
