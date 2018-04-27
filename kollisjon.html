@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Sebastian Bjørvik">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+    <script>
+        window.onload = oppstart;
+
+        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        var vx = 10;
+        var vy = -10;
+        var px = 1;
+        var py = 1;
+        var sx = 300;
+        var sy = 400;
+        var dx = 700;
+        var dy = 100;
+        var boks = document.getElementById("boks");
+        var ball = document.getElementById("ball");
+
+        function oppstart() {
+            // Hovedprogramkode her...
+            var boks = document.getElementById("boks");
+            var ball = document.getElementById("ball");
+            boks.style.width = 700 + "px";
+            boks.style.height = 500 + "px";
+            setInterval(flytt1, (1000/60));
+            setInterval(flytt2, (1000/60));
+        }
+        function flytt1() {
+            console.log("ja");
+            var boks = document.getElementById("boks");
+            var ball = document.getElementById("ball");
+            ball.style.left = sx + vx + "px";
+            ball.style.top = sy + vy + "px";
+            sx = sx + vx;
+            sy = sy + vy;
+            if (sx > w-200) {
+                vx = -vx;
+                /*ball.style.backgroundImage= "url('oyvindboipaatokt.jpg')";
+                ball.style.backgroundSize = "200px";
+                ball.style.backgroundPosition = "-80px -50px";*/
+            }
+            if (sy > h-200) {
+                vy = -vy;
+                /*ball.style.backgroundImage= "url('luddeboipaatokt.jpg')";
+                ball.style.backgroundSize = "100px";
+                ball.style.backgroundPosition = "-25px -36px";*/
+            }
+            if (sx <= 0) {
+                vx = -vx;
+                /*ball.style.backgroundImage= "url('oyvindboipaatokt.jpg')";
+                ball.style.backgroundSize = "200px";
+                ball.style.backgroundPosition = "-80px -50px";*/
+            }
+            if (sy <= 0) {
+                vy = -vy;
+                /*ball.style.backgroundImage= "url('luddeboipaatokt.jpg')";
+                ball.style.backgroundSize = "100px";
+                ball.style.backgroundPosition = "-25px -36px";*/
+            }
+            /*if (sx == dx+53) {
+                vx = -vx;
+                px = -px;
+            }*/
+        }
+        function flytt2() {
+            console.log("ja");
+            var boks = document.getElementById("boks");
+            var ball = document.getElementById("ball2");
+            ball.style.left = dx + px + "px";
+            ball.style.top = dy + py + "px";
+            ball.style.backgroundSize = "1000px";
+            ball.style.backgroundPosition = "-340px -120px";
+            dx = dx + px;
+            dy = dy + py;
+            if (dx > w-200) {
+                px = -px;
+                /*ball.style.backgroundImage= "url('oyvindboipaatokt.jpg')";
+                ball.style.backgroundSize = "200px";
+                ball.style.backgroundPosition = "-80px -50px";*/
+            }
+            if (dy > h-200) {
+                py = -py;
+                /*ball.style.backgroundImage= "url('luddeboipaatokt.jpg')";
+                ball.style.backgroundSize = "100px";
+                ball.style.backgroundPosition = "-25px -36px";*/
+            }
+            if (dx <= 4) {
+                px = -px;
+               /* ball.style.backgroundImage= "url('oyvindboipaatokt.jpg')";
+                ball.style.backgroundSize = "200px";
+                ball.style.backgroundPosition = "-80px -50px";*/
+            }
+            if (dy <= 4) {
+                py = -py;
+                /*ball.style.backgroundImage= "url('luddeboipaatokt.jpg')";
+                ball.style.backgroundSize = "100px";
+                ball.style.backgroundPosition = "-25px -36px";*/
+            }
+        }
+
+    </script>
+    <style>
+        body {
+            margin: 0;
+            background-color: #000;
+        }
+        #ball {
+            background-color: deepskyblue;
+            background-image: url("luddeboipaatokt.jpg");
+            background-size: 400px;
+            background-position: -100px -144px;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            border-radius: 50%;
+            left: 3px;
+            top: 3px;
+        }
+        #ball2 {
+            background-color: deeppink;
+            background-image: url("espen.jpg");
+            background-size: 400px;
+            background-position: -55px 5px;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            border-radius: 50%;
+            left: 3px;
+            top: 3px;
+        }
+    </style>
+</head>
+<body>
+<div id="boks"></div>
+<div id="ball"></div>
+<div id="ball2"></div>
+</body>
+</html>
