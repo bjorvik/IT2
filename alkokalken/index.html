@@ -30,7 +30,7 @@
             var arr = [pris, vol, innh];
 
             var score = (parseFloat(vol.replace(',','.').replace(' ',''))/100*parseFloat(innh.replace(',','.').replace(' ',''))/parseFloat(pris.replace(',','.').replace(' ',''))).toFixed(4);
-            d("txt").innerHTML = score + "cl/kr";
+            d("txt").innerHTML = score + "cl/kr" + "<br>" + " (" + Math.floor(score*1000) + "as)";
         }
         function d(typ) {
             return document.getElementById(typ);
