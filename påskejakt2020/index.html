@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Påskejakt 2020</title>
+</head>
+<script>
+    window.onload = oppstart;
+
+    var tekst = "";
+    var trykkbar = false;
+
+    function oppstart() {
+        // Hovedprogramkode her...
+        console.log("startet");
+        document.getElementById("input").onchange = sjekkTekst;
+        document.getElementById("knapp").onclick = trykk;
+    }
+    function sjekkTekst() {
+        console.log("oppdatert");
+        tekst = document.getElementById("input").value;
+        if(tekst.length === 4) {
+            knappJa();
+        }
+        else {
+            knappNei();
+        }
+    }
+    function knappJa() {
+        console.log("ja");
+        document.getElementById("knapp").style.backgroundColor = "#ffb900";
+        trykkbar = true;
+    }
+    function knappNei() {
+        console.log("nei");
+        document.getElementById("knapp").style.backgroundColor = "rgba(255, 185, 0, 0.51)";
+        trykkbar = false;
+    }
+    function trykk() {
+        if(trykkbar) {
+            if(tekst == "0000") {
+                document.getElementById("input").value = "";
+                window.open("www.vg.no");
+            }
+        }
+    }
+</script>
+<style>
+    #inputDiv {
+        margin: auto;
+        width: 200px;
+        height: 150px;
+        margin-top: 100px;
+    }
+    #input {
+        margin: auto;
+        width: 195px;
+        height: 50px;
+        font-family: arial;
+        text-align: center;
+        line-height: 50px;
+        font-size: 200%;
+    }
+    #knapp {
+        margin: auto;
+        width: 200px;
+        height: 50px;
+        /*background-color: #ffb900;*/
+        background-color: rgba(255, 185, 0, 0.51);
+        color: white;
+        text-align: center;
+        line-height: 50px;
+        border-radius: 20px;
+        font-family: arial;
+    }
+</style>
+<body>
+<div id="inputDiv">
+    <input type="text" id="input" autocomplete="off">
+<div id="knapp">
+    <h1>LYTT</h1>
+</div>
+</div>
+</body>
+</html>
