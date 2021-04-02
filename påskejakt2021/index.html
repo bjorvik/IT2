@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Påskejakt 2020</title>
+    <title>Påskejakt 2021</title>
 </head>
 <script>
     window.onload = oppstart;
 
     var tekst = "";
     var trykkbar = false;
+    var forsok = 5;
 
     function oppstart() {
         // Hovedprogramkode her...
@@ -38,8 +39,8 @@
     }
     function trykk() {
         if(trykkbar) {
-           if(tekst == "3452") {
-
+           if(tekst == "7319") {
+                window.open("bilde.html");
            }
            else {
                feil();
@@ -47,7 +48,12 @@
         }
     }
     function feil() {
+        forsok --;
+        if (forsok < 1) {
 
+        }
+        document.getElementById("resultat").innerText = "Koden er feil, du har " + forsok + " forsøk igjen";
+        document.getElementById("input").value = "";
     }
 </script>
 <style>
@@ -59,9 +65,10 @@
     }
     #resultat {
         font-family: arial;
-        color: #f00;
+        color: #f40;
         text-align: center;
         font-size: 300%;
+        margin-top: 150px;
     }
     #inputDiv {
         margin: auto;
@@ -99,6 +106,6 @@
     <h1>SJEKK</h1>
 </div>
 </div>
-<h1 id="resultat">Feil!</h1>
+<h1 id="resultat"></h1>
 </body>
 </html>
