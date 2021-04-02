@@ -40,7 +40,7 @@
     function trykk() {
         if(trykkbar) {
            if(tekst == "7319") {
-                window.open("bilde.html");
+                window.open(href="bilde.html", target="_self");
            }
            else {
                feil();
@@ -62,22 +62,23 @@
         color: #ffb900;
         text-align: center;
         font-size: 500%;
+        margin-top: 50%;
     }
     #resultat {
         font-family: arial;
         color: #f40;
         text-align: center;
         font-size: 300%;
-        margin-top: 150px;
+        /*margin-top: 150px;*/
     }
     #inputDiv {
         margin: auto;
-        width: 500px;
+        width: 75%;
         height: 150px;
     }
     #input {
         margin: auto;
-        width: 500px;
+        width: 100%;
         height: 100px;
         font-family: arial;
         text-align: center;
@@ -105,7 +106,7 @@
 <div id="knapp">
     <h1>SJEKK</h1>
 </div>
+<h1 id="resultat">test</h1>
 </div>
-<h1 id="resultat"></h1>
 </body>
 </html>
